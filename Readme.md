@@ -36,7 +36,7 @@
 
 ### Решение 1
 
-![1](https://github.com/Chika1703/1.5_k8s/blob/main/img/2.jpg)
+![1](https://github.com/Chika1703/2.1_k8s/blob/main/img/1.jpg)
 
 ------
 
@@ -53,7 +53,7 @@
 
 ### Решение 2
 
-![2](https://github.com/Chika1703/1.5_k8s/blob/main/img/2.jpg)
+![2](https://github.com/Chika1703/2.1_k8s/blob/main/img/2.jpg)
 
 ------
 
