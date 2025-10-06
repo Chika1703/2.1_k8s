@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-multitool
+  namespace: shared-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: busybox-multitool
+  template:
+    metadata:
+      labels:
+        app: busybox-multitool
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              while true; do
+                echo "Текущее время: $(date)" > /shared/time.txt;
+                sleep 5;
+              done
+          volumeMounts:
+            - name: shared-data
+              mountPath: /shared
+        - name: multitool
+          image: wbitt/network-multitool
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              echo "Ожидание данных..."; 
+              while true; do 
+                echo "--- Содержимое файла ---";
+                cat /shared/time.txt;
+                sleep 5;
+              done
+          volumeMounts:
+            - name: shared-data
+              mountPath: /shared
+      volumes:
+        - name: shared-data
+          emptyDir: {}
